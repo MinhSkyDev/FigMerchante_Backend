@@ -3,10 +3,9 @@ package com.FigMerchante.FigMerchante.Controller;
 import com.FigMerchante.FigMerchante.Model.Answer;
 import com.FigMerchante.FigMerchante.Repository.AnswerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 public class AnswerController {
@@ -18,6 +17,12 @@ public class AnswerController {
     @CrossOrigin
     Answer playerAnswer(@RequestBody Answer answer){
         return answerRepository.save(answer);
+    }
+
+    @GetMapping("/playerAnswer")
+    @CrossOrigin
+    List<Answer> findAllAnswer(){
+        return answerRepository.findAll();
     }
 
 }
